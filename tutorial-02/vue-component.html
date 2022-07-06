@@ -8,26 +8,52 @@
     <script src="https://unpkg.com/vue@3"></script>
   </head>
   <body>
-    <div class="m-5 shadow-md w-80 rounded overflow-hidden">
-      <img src="https://source.unsplash.com/x00CzBt4Dfk/1600x900" alt="Pizza Margherita image"> <div class="p-2">
-          <div class="font-bold text-lg text-gray-700 leading-snug">
-            <a href="#" class="hover:underline">Pizza Margherita</a>
+      <div id="app">
+        <recipe-card
+          imageurl="https://source.unsplash.com/x00CzBt4Dfk/1600x900"
+          imgalt="Pizza Margherita image"
+          titleurl="#"
+          title="Pizza Margherita"
+          description="Invented in Naples in honor of the first queen of Italy, the Margherita pizza is the triumph of Italian cuisine in the world."
+          time="1h 15m"
+          servings="4 Servings"
+          level="Easy">
+        </recipe-card>
       </div>
-      <p class="text-xs leading-tight tracking-wide my-2">Invented in Naples in honor of the first queen of Italy, the Margherita pizza is the triumph of Italian cuisine in the world.</p> <div class="flex pt-2 border-t border-gray-300 text-sm text-gray-700 divide-x-2">
-            <div class="flex-1 text-center">
-              <i class="far fa-clock"></i>
-              <p>1h 15m</p>
-            </div>
-            <div class="flex-1 text-center">
-              <i class="fas fa-utensils"></i>
-              <p>4 Servings</p>
-            </div>
-            <div class="flex-1 text-center">
-              <i class="fas fa-signal"></i>
-              <p>Easy</p>
-            </div>
-          </div>
-        </div>
-      </div>
+
+      <script>
+        const app = Vue.createApp({})
+
+        app.component('recipe-card', {
+          props: ['imageurl', 'imgalt', 'titleurl', 'title', 'description', 'time', 'servings', 'level'],
+          template: `
+            <div class="m-5 shadow-md w-80 rounded overflow-hidden">
+              <img :src="imageurl" :alt="imgalt">
+              <div class="p-2">
+                  <div class="font-bold text-lg text-gray-700 leading-snug">
+                    <a :href="titleurl" class="hover:underline">{{ title }}</a>
+                  </div>
+                  <p class="text-xs leading-tight tracking-wide my-2">{{ description }}</p>
+                  <div class="flex pt-2 border-t border-gray-300 text-sm text-gray-700 divide-x-2">
+                  <div class="flex-1 text-center">
+                    <i class="far fa-clock"></i>
+                    <p>{{ time }}</p>
+                  </div>
+                  <div class="flex-1 text-center">
+                    <i class="fas fa-utensils"></i>
+                    <p>{{ servings }}</p>
+                  </div>
+                  <div class="flex-1 text-center">
+                    <i class="fas fa-signal"></i>
+                    <p>{{ level }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>`
+        })
+
+        app.mount('#app')
+      </script>
+
   </body>
 </html>
