@@ -16,5 +16,18 @@
       <div class="alert-title alert-warning-title">Warning</div>
       <div class="alert-content alert-warning-content">Lorem ipsum dolor sit amet consectetur adipiscing elit.</div>
     </div>
+    <div id="switch" class="dark m-6 w-1/3">
+      <div class="p-2 bg-white dark:bg-gray-800">
+      <h1 class="text-gray-900 dark:text-white">Dark mode in action! Click me to toggle between light and dark modes...</h1>
+      <p class="text-gray-600 dark:text-gray-300">
+            Lorem ipsum...
+          </p>
+        </div>
+      </div>
+      <script>
+        document.getElementById('switch').onclick = function(){
+          this.classList.toggle("dark");
+        }
+      </script>
   </body>
 </html>
